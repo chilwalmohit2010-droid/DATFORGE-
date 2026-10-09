@@ -1,0 +1,6 @@
+{
+  "name": "DayForge",
+  "description": "Premium liquid glass discipline and habit-tracking app with daily routines, deep focus, monthly matrix, and analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

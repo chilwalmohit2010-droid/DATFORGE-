@@ -1,0 +1,69 @@
+{
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        "profile": {
+          ".validate": "newData.hasChildren(['uid']) && newData.child('uid').val() === $uid"
+        },
+        "habits": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": "auth != null && auth.uid === $uid"
+        },
+        "completions": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": "auth != null && auth.uid === $uid"
+        },
+        "water": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": "auth != null && auth.uid === $uid"
+        },
+        "focus_sessions": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": "auth != null && auth.uid === $uid"
+        },
+        "night_reviews": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": "auth != null && auth.uid === $uid"
+        },
+        "reminders": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": "auth != null && auth.uid === $uid"
+        },
+        "streaks": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": "auth != null && auth.uid === $uid"
+        },
+        "progress": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": "auth != null && auth.uid === $uid"
+        },
+        "notifications": {
+          ".read": "auth != null && auth.uid === $uid",
+          ".write": "auth != null && auth.uid === $uid"
+        }
+      }
+    },
+    "usernames": {
+      ".read": true,
+      "$username": {
+        ".write": "auth != null && (!newData.exists() || newData.val() === auth.uid)"
+      }
+    },
+    "publicUsers": {
+      ".read": true,
+      ".indexOn": ["publicProfileEnabled", "disciplineScore"],
+      "$username": {
+        ".write": "auth != null && (!newData.exists() || newData.child('uid').val() === auth.uid)",
+        ".validate": "newData.hasChildren(['uid', 'username', 'publicProfileEnabled']) && !newData.hasChild('email') && !newData.hasChild('password')"
+      }
+    },
+    "leaderboard": {
+      ".read": true,
+      "$uid": {
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    }
+  }
+}
